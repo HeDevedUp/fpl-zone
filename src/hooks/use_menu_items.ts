@@ -1,29 +1,28 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "app_content";
-import { logout } from "config";
+// import { logout } from "config";
 
-import { AuthModalContext, AuthModalView } from "components/layout";
+// import { AuthModalContext, AuthModalView } from "components/layout";
 import { MenuItemType } from "components/nav_drawer/menu_list";
 
 interface MenuItems {
   nav: MenuItemType[];
-  auth: MenuItemType[];
 }
 
 export const useMenuItems = (closeNavDrawer: () => void): MenuItems => {
   const { fplId, setFplId, user } = useContext(AuthContext);
   const navigate = useNavigate();
-  const { setAuthModalView } = useContext(AuthModalContext);
+  // const { setAuthModalView } = useContext(AuthModalContext);
 
-  const onLogoutClick = (): void => {
-    fplId ? setFplId() : logout();
-  };
+  // const onLogoutClick = (): void => {
+  //   fplId ? setFplId() : logout();
+  // };
 
-  const onAuthItemClick = (view: AuthModalView): void => {
-    closeNavDrawer();
-    setAuthModalView(view);
-  };
+  // const onAuthItemClick = (view: AuthModalView): void => {
+  //   closeNavDrawer();
+  //   setAuthModalView(view);
+  // };
 
   const onMobileItemClick = (href: string): void => {
     closeNavDrawer();
@@ -96,37 +95,37 @@ export const useMenuItems = (closeNavDrawer: () => void): MenuItems => {
     }
   ];
 
-  const auth: MenuItemType[] = [
-    ...user || fplId
-      ? [
-        {
-          id: "logout",
-          label: "logout",
-          onClick: onLogoutClick
-        },
-        ...user
-          ? [
-            {
-              id: "account",
-              label: "account",
-              onClick: () => onAuthItemClick("account")
-            }
-          ]
-          : []
-      ]
-      : [
-        {
-          id: "login",
-          label: "login",
-          onClick: () => onAuthItemClick("login")
-        },
-        {
-          id: "register",
-          label: "register",
-          onClick: () => onAuthItemClick("register")
-        }
-      ]
-  ];
+  // const auth: MenuItemType[] = [
+  //   ...user || fplId
+  //     ? [
+  //       {
+  //         id: "logout",
+  //         label: "logout",
+  //         onClick: onLogoutClick
+  //       },
+  //       ...user
+  //         ? [
+  //           {
+  //             id: "account",
+  //             label: "account",
+  //             onClick: () => onAuthItemClick("account")
+  //           }
+  //         ]
+  //         : []
+  //     ]
+  //     : [
+  //       {
+  //         id: "login",
+  //         label: "login",
+  //         onClick: () => onAuthItemClick("login")
+  //       },
+  //       {
+  //         id: "register",
+  //         label: "register",
+  //         onClick: () => onAuthItemClick("register")
+  //       }
+  //     ]
+  // ];
 
-  return { nav, auth };
+  return { nav };
 };

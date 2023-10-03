@@ -13,11 +13,10 @@ import {
   TeamPicks,
   Transfer
 } from "types";
+export const base_url = "http://localhost:8010/proxy/"
+  
 
-export const base_url = process.env.REACT_APP_ENVIRONMENT === "DEVELOPMENT"
-  ? "http://localhost:8010/proxy/"
-  : "/api/";
-
+  // process.env.REACT_APP_ENVIRONMENT === "DEVELOPMENT"
 export const getGameData = async (): Promise<GameData> => {
   const response = await axios.get(`${base_url}bootstrap-static/`);
 

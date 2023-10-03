@@ -39,7 +39,7 @@ export const MenuList = ({ activeId, closeNavDrawer }: MenuListProps): JSX.Eleme
           />
         ))}
       </List>
-      <List>
+      {/* <List>
         {menuItems.auth.map((item, key: number) => (
           <MenuItem
             activeId={activeId}
@@ -47,7 +47,7 @@ export const MenuList = ({ activeId, closeNavDrawer }: MenuListProps): JSX.Eleme
             menuItem={item}
           />
         ))}
-      </List>
+      </List> */}
     </Box>
   );
 };

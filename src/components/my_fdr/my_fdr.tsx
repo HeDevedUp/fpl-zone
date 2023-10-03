@@ -3,7 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { getTeamData, getTeamPicksForGameweek } from "api/fpl_api_provider";
 import { AppDataContext } from "app_content";
-import { auth } from "config";
+// import { auth } from "config";
 import { GetPlayerById } from "helpers";
 import { useFplId } from "hooks/use_fpl_id";
 import { useGameStatus } from "hooks/use_game_status";
@@ -14,7 +14,7 @@ import FdrTable from "components/fdr/fdr";
 import { Notifier, notifierMessageMap as msgMap } from "components/layout";
 
 export const MyFdr = (): JSX.Element => {
-  const [user] = useAuthState(auth);
+  // const [user] = useAuthState(auth);
   const { gameweeks, players } = useContext(AppDataContext) as AppData;
   const { seasonNotStarted } = useGameStatus();
   const currentGameweek = gameweeks.find((gw) => gw.is_current) as Gameweek;
@@ -44,13 +44,13 @@ export const MyFdr = (): JSX.Element => {
     return <Notifier message={msgMap.seasonNotStarted} type='warning' />;
   }
 
-  if (!fplId) {
-    if (!user) {
-      return <Notifier message={msgMap.fplIdLoginRequired} type='warning' />;
-    }
+  // if (!fplId) {
+  //   if (!user) {
+  //     return <Notifier message={msgMap.fplIdLoginRequired} type='warning' />;
+  //   }
 
-    return <Notifier message={msgMap.fplIdRequired} type='error' />;
-  }
+  //   return <Notifier message={msgMap.fplIdRequired} type='error' />;
+  // }
 
   if (teamDataFetchIsLoading || teamPicksFetchIsLoading) return <Notifier message={msgMap.fetching} />;
   if (teamDataFetchError || !teamData) return <Notifier message={msgMap.teamDataFetchError} type='error' />;

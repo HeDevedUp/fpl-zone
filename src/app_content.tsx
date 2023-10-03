@@ -5,7 +5,7 @@ import { BrowserRouter as Router,Navigate,Route, Routes } from "react-router-dom
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/system";
 import { getAllFixtures, getGameData } from "api/fpl_api_provider";
-import { auth } from "config";
+// import { auth } from "config";
 import { User } from "firebase/auth";
 import { isError } from "lodash";
 import {
@@ -37,9 +37,9 @@ export const AppDataContext = React.createContext<AppData>({} as AppData);
 
 export default function AppContent(): JSX.Element {
   const theme = useTheme();
-  const [user] = useAuthState(auth);
+  // const [user] = useAuthState(auth);
   const [fplId, setFplId] = useState<number | undefined>();
-  const authContextValue = { fplId, setFplId, user };
+  // const authContextValue = { fplId, setFplId, user };
 
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -94,7 +94,8 @@ export default function AppContent(): JSX.Element {
   };
 
   return (
-    <AuthContext.Provider value={authContextValue}>
+    // <AuthContext.Provider value={authContextValue}>
+    // </AuthContext.Provider>
       <AppDataContext.Provider value={appDataContextValue}>
         <Router>
           <Routes>
@@ -156,7 +157,9 @@ export default function AppContent(): JSX.Element {
           </Routes>
         </Router>
       </AppDataContext.Provider>
-    </AuthContext.Provider>
+
+
+
   );
 
 }

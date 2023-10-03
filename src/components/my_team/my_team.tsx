@@ -3,7 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { getTeamData, getTeamPicksForGameweek } from "api/fpl_api_provider";
 import { AppDataContext } from "app_content";
-import { auth } from "config";
+// import { auth } from "config";
 import { useFplId } from "hooks/use_fpl_id";
 import { useGameStatus } from "hooks/use_game_status";
 import { AppData, Gameweek } from "types";
@@ -14,7 +14,7 @@ import Lineup from "components/lineup/lineup";
 import { getMyTeamLineup } from "./get_my_team_lineup";
 
 export const MyTeam = (): JSX.Element => {
-  const [user] = useAuthState(auth);
+  // const [user] = useAuthState(auth);
   const { gameweeks, positions, players } = useContext(AppDataContext) as AppData;
   const { seasonNotStarted } = useGameStatus();
   const currentGameweek = gameweeks.find((gw) => gw.is_current) as Gameweek;
@@ -45,7 +45,7 @@ export const MyTeam = (): JSX.Element => {
   }
 
   if (!fplId) {
-    if (!user) {
+    if (!fplId) {
       return <Notifier message={msgMap.fplIdLoginRequired} type='warning' />;
     }
 
